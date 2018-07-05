@@ -17,6 +17,12 @@ Route::group(['middleware'=>['web']],function (){
         return view('welcome');
     });
 
+    //登录
     Route::get('admin/login', "Admin\LoginController@login");
+
+    //验证码
+    Route::get('admin/code', "Admin\LoginController@code");
+
+    Route::get('admin/getcode', "Admin\LoginController@getcode");
 
 });

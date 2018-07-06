@@ -22,6 +22,9 @@ Route::group(['middleware'=>[]],function (){//web中间件从5.2.27版本以后�
     Route::any('admin/login', "Admin\LoginController@login");
 
     //验证码
-    Route::get('admin/code', "Admin\LoginController@code");
+    Route::any('admin/code', "Admin\LoginController@code");
+
+    //后台密码Crypt加密和解密
+    Route::any('admin/crypt','Admin\LoginController@crypt');
 
 });

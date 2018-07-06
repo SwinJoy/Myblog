@@ -24,10 +24,17 @@ Route::group(['middleware'=>[]],function (){//web中间件从5.2.27版本以后�
     //验证码
     Route::any('admin/code', "Admin\LoginController@code");
 
+});
+
+
+Route::group(['middleware'=>['admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
     //登录后跳转到主页
-    Route::any('admin/index','Admin\IndexController@index');
+    Route::any('index','IndexController@index');
 
     //信息页
-    Route::any('admin/info','Admin\IndexController@info');
+    Route::any('info','IndexController@info');
+
+    //退出登录
+    Route::any('quit','LoginController@quit');
 
 });

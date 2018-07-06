@@ -12,17 +12,16 @@
 */
 
 
-Route::group(['middleware'=>['web']],function (){
+Route::group(['middleware'=>[]],function (){//web中间件从5.2.27版本以后默认全局加载，
+                                            //不需要自己手动载入，如果自己手动重复载入，会导致session无法加载等情况。
     Route::get('/', function () {
         return view('welcome');
     });
 
     //登录
-    Route::get('admin/login', "Admin\LoginController@login");
+    Route::any('admin/login', "Admin\LoginController@login");
 
     //验证码
     Route::get('admin/code', "Admin\LoginController@code");
-
-    Route::get('admin/getcode', "Admin\LoginController@getcode");
 
 });

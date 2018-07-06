@@ -29,10 +29,10 @@ class LoginController extends CommonController
                 return back()->with('msg','用户名或密码错误!');
             }
             session(['user'=>$user]);
-            dd(session('user'));
-            echo 'ok';
+//            dd(session('user'));
+//            echo 'ok';
+            return redirect('admin/index');//验证成功后跳转到登录页面
         }else{
-
             return view('admin.login');
         }
     }
@@ -45,6 +45,7 @@ class LoginController extends CommonController
 
     public function crypt()
     {
+        //后台密码Crypt加密和解密
         //encrypt加密  decrypt解密
         $str = '123456';
         echo Crypt::encrypt($str);

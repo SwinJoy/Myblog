@@ -14,9 +14,13 @@
         <!--如果存在错误信息，就对错误信息进行循环遍历，打印对应的错误信息-->
         @if(count($errors)>0)
             <div class="mark">
-                @foreach($errors->all() as $error)
-                    <p>{{$error}}</p>
-                @endforeach
+                @if(is_object($errors))<!--如果是对象，就是验证条件没有通过-->
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                @else<!--原密码判断出错-->
+                    <p>{{$errors}}</p>
+                @endif
             </div>
         @endif
     </div>

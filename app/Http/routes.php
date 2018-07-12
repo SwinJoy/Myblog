@@ -40,6 +40,9 @@ Route::group(['middleware'=>['web','admin.login'],'prefix'=>'admin','namespace'=
     //修改密码
     Route::any('pass','IndexController@pass');
 
+    //文章分类排序ajax实现
+    Route::post('cate/changeorder','CategoryController@changeOrder');
+
     //文章分类
     Route::resource('category','CategoryController');
 });

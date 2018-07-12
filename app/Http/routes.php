@@ -27,7 +27,7 @@ Route::group(['middleware'=>[]],function (){//web中间件从5.2.27版本以后�
 });
 
 
-Route::group(['middleware'=>['admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
+Route::group(['middleware'=>['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
     //登录后跳转到主页
     Route::get('index','IndexController@index');
 
@@ -40,4 +40,6 @@ Route::group(['middleware'=>['admin.login'],'prefix'=>'admin','namespace'=>'Admi
     //修改密码
     Route::any('pass','IndexController@pass');
 
+    //文章分类
+    Route::resource('category','CategoryController');
 });

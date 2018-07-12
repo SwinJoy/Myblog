@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="style/css/ch-ui.admin.css">
-	<link rel="stylesheet" href="style/font/css/font-awesome.min.css">
-</head>
-<body>
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
@@ -20,6 +12,18 @@
 	<div class="result_wrap">
         <div class="result_title">
             <h3>快捷操作</h3>
+            <!--如果存在错误信息，就对错误信息进行循环遍历，打印对应的错误信息-->
+            @if(count($errors)>0)
+                <div class="mark">
+                @if(is_object($errors))<!--如果是对象，就是验证条件没有通过-->
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                 @else
+                    <p>{{$errors}}</p>
+                 @endif
+                </div>
+            @endif
         </div>
         <div class="result_content">
             <div class="short_wrap">
